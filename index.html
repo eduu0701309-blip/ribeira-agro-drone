@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ribeira Agro Drone</title><link rel="manifest" href="./manifest.webmanifest"><meta name="theme-color" content="#176b3a">
+<style>
+:root{--green:#176b3a;--green2:#228b52;--dark:#10251a;--bg:#f4f7f5;--card:#fff;--muted:#6d7b73;--red:#c83b3b;--yellow:#d99000;--blue:#2878b9;--shadow:0 8px 24px rgba(16,37,26,.08)}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--dark)}
+button,input,select{font:inherit}.hidden{display:none!important}
+.login{min-height:100vh;display:grid;place-items:center;background:linear-gradient(135deg,#0d3b22,#21834d)}
+.login-card{width:min(420px,92%);background:#fff;padding:34px;border-radius:24px;box-shadow:0 20px 50px #0004}
+.logo{display:flex;align-items:center;gap:12px;font-weight:800;font-size:22px}.logo-mark{width:46px;height:46px;border-radius:14px;background:var(--green);color:#fff;display:grid;place-items:center;font-size:23px}
+.login h1{font-size:28px;margin:25px 0 8px}.login p{color:var(--muted)}label{display:block;font-size:13px;font-weight:700;margin:16px 0 7px}input,select{width:100%;padding:13px 14px;border:1px solid #d9e1dc;border-radius:11px;background:#fff;outline:none}input:focus{border-color:var(--green)}
+.btn{border:0;border-radius:11px;padding:13px 16px;font-weight:750;cursor:pointer}.primary{background:var(--green);color:#fff}.secondary{background:#eaf3ed;color:var(--green)}.danger{background:#fdeaea;color:var(--red)}
+.app{min-height:100vh}.topbar{height:70px;background:#fff;border-bottom:1px solid #e4ebe6;display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:5}.user{display:flex;align-items:center;gap:10px}.avatar{width:38px;height:38px;border-radius:50%;background:#dceee3;color:var(--green);display:grid;place-items:center;font-weight:800}
+.layout{display:flex}.sidebar{width:250px;background:#10251a;color:#dce9e1;min-height:calc(100vh - 70px);padding:18px 12px;position:fixed;left:0;top:70px;bottom:0}.nav{display:grid;gap:6px}.nav button{background:none;border:0;color:#c9d7cf;text-align:left;padding:13px 14px;border-radius:10px;cursor:pointer;font-weight:650}.nav button.active,.nav button:hover{background:#1c6b3d;color:#fff}.content{margin-left:250px;padding:28px;width:calc(100% - 250px)}.page{display:none}.page.active{display:block}.page-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}.page-title h1{margin:0;font-size:27px}.muted{color:var(--muted);font-size:14px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.card{background:var(--card);border-radius:16px;padding:19px;box-shadow:var(--shadow)}.stat .icon{font-size:24px}.stat .num{font-size:27px;font-weight:800;margin:8px 0 3px}.stat small{color:var(--muted)}.grid2{display:grid;grid-template-columns:1.3fr 1fr;gap:16px;margin-top:16px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.section{margin-top:16px}.card h3{margin:0 0 14px}.row{display:flex;gap:10px;align-items:center;justify-content:space-between}.tag{padding:5px 9px;border-radius:999px;font-size:12px;font-weight:750}.ok{background:#e2f5e9;color:#18713d}.warn{background:#fff3d7;color:#9a6700}.bad{background:#fde6e6;color:#a92828}.info{background:#e2f0fb;color:#21699f}.bar{height:9px;background:#e9efeb;border-radius:10px;overflow:hidden}.fill{height:100%;background:var(--green);border-radius:10px}.alert{display:flex;gap:12px;padding:13px;border-radius:12px;background:#fff8e8;margin-bottom:9px}.alert strong{display:block}.table{width:100%;border-collapse:collapse}.table th,.table td{text-align:left;padding:12px 8px;border-bottom:1px solid #edf1ee;font-size:14px}.table th{color:var(--muted);font-size:12px;text-transform:uppercase}.map{height:360px;border-radius:16px;position:relative;overflow:hidden;background:linear-gradient(145deg,#a8cf91,#7eb77c);background-image:radial-gradient(#ffffff55 1px,transparent 1px);background-size:22px 22px}.field{position:absolute;border:3px solid #fff9;border-radius:20px;background:#6cae6655;display:grid;place-items:center;color:#fff;font-weight:800;text-shadow:0 1px 3px #000}.f1{left:5%;top:9%;width:35%;height:36%}.f2{left:43%;top:8%;width:51%;height:29%;background:#c7b96c66}.f3{left:10%;top:52%;width:30%;height:37%;background:#5e9f7a77}.f4{left:45%;top:46%;width:47%;height:44%;background:#91a96266}.drone{position:absolute;left:47%;top:39%;font-size:28px}.legend{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px;font-size:12px}.legend span{display:flex;align-items:center;gap:5px}.dot{width:10px;height:10px;border-radius:50%;background:#fff}.chart{height:190px;display:flex;align-items:end;gap:10px;padding:15px 5px 5px}.col{flex:1;background:#3a9560;border-radius:7px 7px 0 0;position:relative;min-height:10px}.col span{position:absolute;top:-22px;font-size:11px;width:100%;text-align:center}.mini{font-size:12px;color:var(--muted)}.modal{position:fixed;inset:0;background:#0008;display:grid;place-items:center;z-index:20}.modal-card{background:#fff;border-radius:18px;padding:25px;width:min(500px,92%);max-height:90vh;overflow:auto}.toast{position:fixed;right:20px;bottom:20px;background:#10251a;color:#fff;padding:14px 18px;border-radius:12px;box-shadow:var(--shadow);z-index:30}
+.mobile-nav{display:none}
+@media(max-width:900px){.sidebar{display:none}.content{margin-left:0;width:100%;padding:18px 14px 85px}.grid{grid-template-columns:repeat(2,1fr)}.grid2,.grid3{grid-template-columns:1fr}.mobile-nav{display:flex;position:fixed;bottom:0;left:0;right:0;height:64px;background:#10251a;z-index:10;justify-content:space-around}.mobile-nav button{background:none;border:0;color:#fff;font-size:20px}.mobile-nav small{display:block;font-size:9px}.topbar{padding:0 15px}.topbar .logo{font-size:17px}.topbar .logo-mark{width:36px;height:36px}.map{height:300px}}
+@media(max-width:480px){.grid{grid-template-columns:1fr 1fr}.stat{padding:14px}.stat .num{font-size:22px}.page-title{gap:10px;align-items:flex-start}.page-title h1{font-size:23px}.btn{padding:11px 12px}}
+</style>
+</head>
+<body>
+<div id="login" class="login">
+  <div class="login-card">
+    <div class="logo"><div class="logo-mark">🚁</div>Ribeira Agro Drone</div>
+    <h1>Gestão inteligente do campo</h1>
+    <p>Protótipo acadêmico funcional para monitoramento agrícola e pecuário.</p>
+    <label>E-mail</label><input id="email" value="produtor@ribeiraagro.com">
+    <label>Senha</label><input id="password" type="password" value="123456">
+    <button class="btn primary" style="width:100%;margin-top:20px" onclick="login()">Entrar no sistema</button>
+    <button class="btn secondary" style="width:100%;margin-top:10px" onclick="toast('Cadastro demonstrativo ativado')">Criar conta</button>
+    <p style="font-size:12px;text-align:center;margin-top:18px">Dados simulados para demonstração do TCC.</p>
+  </div>
+</div>
+
+<div id="app" class="app hidden">
+<header class="topbar">
+  <div class="logo"><div class="logo-mark">🚁</div>Ribeira Agro Drone</div>
+  <div class="user"><span class="muted">Fazenda Vale Verde</span><div class="avatar">EC</div></div>
+</header>
+<div class="layout">
+<aside class="sidebar">
+  <div class="nav">
+    <button class="active" onclick="show('dashboard',this)">🏠 Dashboard</button>
+    <button onclick="show('agricultura',this)">🌱 Agricultura</button>
+    <button onclick="show('pecuaria',this)">🐄 Pecuária</button>
+    <button onclick="show('drones',this)">🚁 Drones e voos</button>
+    <button onclick="show('mapa',this)">🗺️ Mapa da propriedade</button>
+    <button onclick="show('ia',this)">🤖 Análise por IA</button>
+    <button onclick="show('alertas',this)">🔔 Alertas</button>
+    <button onclick="show('indicadores',this)">📊 Indicadores</button>
+    <button onclick="show('custos',this)">💰 Custos e resultados</button>
+    <button onclick="show('perfil',this)">⚙️ Perfil</button>
+    <button onclick="logout()">↪️ Sair</button>
+  </div>
+</aside>
+<main class="content">
+
+<section id="dashboard" class="page active">
+<div class="page-title"><div><h1>Dashboard</h1><div class="muted">Visão geral da Fazenda Vale Verde</div></div><button class="btn primary" onclick="newFlight()">+ Novo voo</button></div>
+<div class="grid">
+<div class="card stat"><div class="icon">🌱</div><div class="num">86,4 ha</div><small>Área agrícola monitorada</small></div>
+<div class="card stat"><div class="icon">🐄</div><div class="num">428</div><small>Animais cadastrados</small></div>
+<div class="card stat"><div class="icon">🚁</div><div class="num">18</div><small>Voos este mês</small></div>
+<div class="card stat"><div class="icon">⚠️</div><div class="num">4</div><small>Alertas ativos</small></div>
+</div>
+<div class="grid2">
+<div class="card"><div class="row"><h3>Saúde das culturas</h3><span class="tag ok">82% saudável</span></div>
+<p class="mini">Soja — Talhão 03</p><div class="bar"><div class="fill" style="width:82%"></div></div>
+<p class="mini" style="margin-top:16px">Milho — Talhão 05</p><div class="bar"><div class="fill" style="width:91%"></div></div>
+<p class="mini" style="margin-top:16px">Pastagem — Área 02</p><div class="bar"><div class="fill" style="width:74%"></div></div></div>
+<div class="card"><h3>Alertas recentes</h3><div class="alert">💧 <div><strong>Estresse hídrico</strong><span class="mini">Talhão 03 · há 35 min</span></div></div><div class="alert">🪲 <div><strong>Possível praga</strong><span class="mini">Talhão 05 · há 2 h</span></div></div><div class="alert">🔋 <div><strong>Bateria do Drone 02</strong><span class="mini">Abaixo de 25%</span></div></div></div>
+</div>
+<div class="section grid3">
+<div class="card"><h3>Último voo</h3><strong>VR-018</strong><p class="mini">Talhão 03 · 18,4 ha</p><span class="tag ok">Concluído</span></div>
+<div class="card"><h3>Produtividade estimada</h3><strong style="font-size:28px">3,62 t/ha</strong><p class="mini">Soja · +8,4% vs. ciclo anterior</p></div>
+<div class="card"><h3>Resultado estimado</h3><strong style="font-size:28px">R$ 48.720</strong><p class="mini">Margem operacional do ciclo</p></div>
+</div>
+</section>
+
+<section id="agricultura" class="page">
+<div class="page-title"><div><h1>🌱 Agricultura</h1><div class="muted">Monitoramento dos talhões</div></div><button class="btn primary" onclick="toast('Novo talhão criado no modo demonstrativo')">+ Talhão</button></div>
+<div class="grid3">
+<div class="card"><div class="row"><h3>Talhão 03</h3><span class="tag ok">Saudável</span></div><p>Soja · 18,4 ha</p><p class="mini">NDVI: 0,78</p><div class="bar"><div class="fill" style="width:78%"></div></div><p class="mini">Estresse hídrico: 12%</p><button class="btn secondary" onclick="show('ia')">Analisar com IA</button></div>
+<div class="card"><div class="row"><h3>Talhão 05</h3><span class="tag warn">Atenção</span></div><p>Milho · 24,8 ha</p><p class="mini">NDVI: 0,69</p><div class="bar"><div class="fill" style="width:69%"></div></div><p class="mini">Possível praga: 4,6%</p><button class="btn secondary" onclick="show('ia')">Analisar com IA</button></div>
+<div class="card"><div class="row"><h3>Talhão 07</h3><span class="tag ok">Saudável</span></div><p>Soja · 21,2 ha</p><p class="mini">NDVI: 0,84</p><div class="bar"><div class="fill" style="width:84%"></div></div><p class="mini">Umidade adequada</p><button class="btn secondary" onclick="show('mapa')">Ver no mapa</button></div>
+</div>
+<div class="card section"><h3>Histórico de monitoramento</h3><table class="table"><tr><th>Data</th><th>Talhão</th><th>Cultura</th><th>NDVI</th><th>Status</th></tr><tr><td>10/08/2026</td><td>03</td><td>Soja</td><td>0,78</td><td><span class="tag ok">Normal</span></td></tr><tr><td>09/08/2026</td><td>05</td><td>Milho</td><td>0,69</td><td><span class="tag warn">Atenção</span></td></tr><tr><td>08/08/2026</td><td>07</td><td>Soja</td><td>0,84</td><td><span class="tag ok">Normal</span></td></tr></table></div>
+</section>
+
+<section id="pecuaria" class="page">
+<div class="page-title"><div><h1>🐄 Pecuária</h1><div class="muted">Gestão dos lotes e indicadores</div></div><button class="btn primary" onclick="toast('Animal cadastrado no modo demonstrativo')">+ Animal</button></div>
+<div class="grid">
+<div class="card stat"><div class="num">428</div><small>Total de animais</small></div><div class="card stat"><div class="num">6</div><small>Lotes ativos</small></div><div class="card stat"><div class="num">1,18 kg/dia</div><small>Ganho médio</small></div><div class="card stat"><div class="num">96%</div><small>Conformidade</small></div>
+</div>
+<div class="card section"><h3>Lotes</h3><table class="table"><tr><th>Lote</th><th>Animais</th><th>Peso médio</th><th>GPD</th><th>Status</th></tr><tr><td>Recria 01</td><td>96</td><td>318 kg</td><td>1,22 kg</td><td><span class="tag ok">Ótimo</span></td></tr><tr><td>Engorda 02</td><td>112</td><td>448 kg</td><td>1,31 kg</td><td><span class="tag ok">Ótimo</span></td></tr><tr><td>Matrizes</td><td>84</td><td>472 kg</td><td>0,74 kg</td><td><span class="tag warn">Monitorar</span></td></tr></table></div>
+</section>
+
+<section id="drones" class="page">
+<div class="page-title"><div><h1>🚁 Drones e voos</h1><div class="muted">Controle operacional</div></div><button class="btn primary" onclick="newFlight()">+ Planejar voo</button></div>
+<div class="grid3"><div class="card"><h3>Drone 01</h3><p>Autonomia: 42 min</p><span class="tag ok">Disponível</span></div><div class="card"><h3>Drone 02</h3><p>Bateria: 23%</p><span class="tag warn">Recarregar</span></div><div class="card"><h3>Drone 03</h3><p>Manutenção preventiva</p><span class="tag bad">Indisponível</span></div></div>
+<div class="card section"><h3>Histórico de voos</h3><table class="table"><tr><th>Código</th><th>Data</th><th>Área</th><th>Duração</th><th>Status</th></tr><tr><td>VR-018</td><td>10/08/2026</td><td>18,4 ha</td><td>21 min</td><td><span class="tag ok">Concluído</span></td></tr><tr><td>VR-017</td><td>09/08/2026</td><td>24,8 ha</td><td>28 min</td><td><span class="tag ok">Concluído</span></td></tr><tr><td>VR-016</td><td>08/08/2026</td><td>21,2 ha</td><td>25 min</td><td><span class="tag ok">Concluído</span></td></tr></table></div>
+</section>
+
+<section id="mapa" class="page">
+<div class="page-title"><div><h1>🗺️ Mapa da propriedade</h1><div class="muted">Visão demonstrativa dos talhões e áreas</div></div></div>
+<div class="card"><div class="map"><div class="field f1">Talhão 03<br>Soja</div><div class="field f2">Talhão 05<br>Milho</div><div class="field f3">Pastagem 02</div><div class="field f4">Talhão 07<br>Soja</div><div class="drone">🚁</div></div><div class="legend"><span>🟩 Área agrícola</span><span>🐄 Pastagem</span><span>🚁 Drone</span><span>⚠️ Área de atenção</span></div></div>
+</section>
+
+<section id="ia" class="page">
+<div class="page-title"><div><h1>🤖 Análise por IA</h1><div class="muted">Simulação de análise de imagens capturadas por drone</div></div><button class="btn primary" onclick="runAI()">Executar análise</button></div>
+<div id="aiResult" class="card"><h3>Pronto para analisar</h3><p class="muted">Clique em “Executar análise” para gerar um diagnóstico demonstrativo do Talhão 03.</p></div>
+<div class="grid3 section"><div class="card"><h3>Índice vegetativo</h3><strong style="font-size:32px">0,78</strong><p class="mini">Faixa saudável</p></div><div class="card"><h3>Estresse hídrico</h3><strong style="font-size:32px">12%</strong><p class="mini">Área potencialmente afetada</p></div><div class="card"><h3>Possível praga</h3><strong style="font-size:32px">4,6%</strong><p class="mini">Área para inspeção</p></div></div>
+</section>
+
+<section id="alertas" class="page">
+<div class="page-title"><div><h1>🔔 Alertas</h1><div class="muted">Ocorrências que precisam de atenção</div></div><button class="btn secondary" onclick="toast('Alertas marcados como visualizados')">Marcar como lidos</button></div>
+<div class="card"><div class="alert">💧 <div><strong>Estresse hídrico detectado — Talhão 03</strong><span class="mini">12% da área · recomendado verificar irrigação.</span></div></div><div class="alert">🪲 <div><strong>Possível ocorrência de praga — Talhão 05</strong><span class="mini">4,6% da área · realizar inspeção em campo.</span></div></div><div class="alert">🔋 <div><strong>Drone 02 com bateria baixa</strong><span class="mini">23% de carga.</span></div></div><div class="alert">🐄 <div><strong>Lote Recria 01 — animal fora do perímetro</strong><span class="mini">Evento simulado por geolocalização.</span></div></div></div>
+</section>
+
+<section id="indicadores" class="page">
+<div class="page-title"><div><h1>📊 Indicadores</h1><div class="muted">Desempenho operacional e produtivo</div></div></div>
+<div class="grid3"><div class="card"><h3>Produtividade — Soja</h3><div class="chart"><div class="col" style="height:65%"><span>3,1</span></div><div class="col" style="height:72%"><span>3,3</span></div><div class="col" style="height:79%"><span>3,5</span></div><div class="col" style="height:84%"><span>3,62</span></div></div><p class="mini">t/ha · últimos 4 ciclos</p></div><div class="card"><h3>Voos por mês</h3><div class="chart"><div class="col" style="height:35%"><span>9</span></div><div class="col" style="height:50%"><span>13</span></div><div class="col" style="height:68%"><span>17</span></div><div class="col" style="height:76%"><span>18</span></div></div><p class="mini">missões realizadas</p></div><div class="card"><h3>Saúde dos talhões</h3><div class="chart"><div class="col" style="height:82%"><span>82%</span></div><div class="col" style="height:91%"><span>91%</span></div><div class="col" style="height:74%"><span>74%</span></div></div><p class="mini">área saudável por talhão</p></div></div>
+</section>
+
+<section id="custos" class="page">
+<div class="page-title"><div><h1>💰 Custos e resultados</h1><div class="muted">Dados financeiros simulados</div></div><button class="btn primary" onclick="toast('Relatório financeiro gerado')">Gerar relatório</button></div>
+<div class="grid"><div class="card stat"><div class="num">R$ 82.400</div><small>Custo total do ciclo</small></div><div class="card stat"><div class="num">R$ 131.120</div><small>Receita estimada</small></div><div class="card stat"><div class="num">R$ 48.720</div><small>Resultado</small></div><div class="card stat"><div class="num">37,2%</div><small>Margem operacional</small></div></div>
+<div class="card section"><h3>Composição dos custos</h3><table class="table"><tr><th>Categoria</th><th>Valor</th><th>Participação</th></tr><tr><td>Insumos</td><td>R$ 41.200</td><td>50%</td></tr><tr><td>Operação</td><td>R$ 18.900</td><td>23%</td></tr><tr><td>Alimentação animal</td><td>R$ 12.300</td><td>15%</td></tr><tr><td>Drone e tecnologia</td><td>R$ 5.700</td><td>7%</td></tr><tr><td>Outros</td><td>R$ 4.300</td><td>5%</td></tr></table></div>
+</section>
+
+<section id="perfil" class="page">
+<div class="page-title"><div><h1>⚙️ Perfil e configurações</h1><div class="muted">Dados da conta e da propriedade</div></div></div>
+<div class="grid2"><div class="card"><h3>Produtor</h3><label>Nome</label><input value="Eduardo Contes"><label>E-mail</label><input value="produtor@ribeiraagro.com"><label>Propriedade</label><input value="Fazenda Vale Verde"><button class="btn primary" style="margin-top:16px" onclick="toast('Alterações salvas')">Salvar alterações</button></div><div class="card"><h3>Configurações</h3><p>🔔 Notificações <span class="tag ok">Ativadas</span></p><p>🛰️ Sincronização <span class="tag ok">Online</span></p><p>🤖 IA demonstrativa <span class="tag info">Ativada</span></p><p>📡 Dados de drones <span class="tag info">Simulados</span></p></div></div>
+</section>
+</main></div>
+<div class="mobile-nav"><button onclick="show('dashboard')">🏠<small>Início</small></button><button onclick="show('agricultura')">🌱<small>Agro</small></button><button onclick="show('drones')">🚁<small>Drone</small></button><button onclick="show('ia')">🤖<small>IA</small></button><button onclick="show('alertas')">🔔<small>Alertas</small></button></div>
+</div>
+<div id="modal" class="modal hidden"><div class="modal-card"><div class="row"><h3>Novo voo de drone</h3><button class="btn danger" onclick="closeModal()">Fechar</button></div><label>Drone</label><select><option>Drone 01 — disponível</option><option>Drone 02 — 23% bateria</option></select><label>Área</label><select><option>Talhão 03 — Soja — 18,4 ha</option><option>Talhão 05 — Milho — 24,8 ha</option><option>Talhão 07 — Soja — 21,2 ha</option></select><label>Tipo de missão</label><select><option>Mapeamento NDVI</option><option>Inspeção de pragas</option><option>Monitoramento geral</option></select><button class="btn primary" style="width:100%;margin-top:18px" onclick="startFlight()">Iniciar missão</button></div></div>
+<div id="toast" class="toast hidden"></div>
+<script>
+function login(){document.getElementById('login').classList.add('hidden');document.getElementById('app').classList.remove('hidden');}
+function logout(){document.getElementById('app').classList.add('hidden');document.getElementById('login').classList.remove('hidden');}
+function show(id,btn){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');window.scrollTo(0,0)}
+function toast(msg){let t=document.getElementById('toast');t.textContent=msg;t.classList.remove('hidden');setTimeout(()=>t.classList.add('hidden'),2600)}
+function newFlight(){document.getElementById('modal').classList.remove('hidden')}
+function closeModal(){document.getElementById('modal').classList.add('hidden')}
+function startFlight(){closeModal();toast('Missão VR-019 iniciada com sucesso (simulação)');setTimeout(()=>toast('Drone em voo: mapeando Talhão 03...'),1800)}
+function runAI(){let r=document.getElementById('aiResult');r.innerHTML='<h3>✅ Análise concluída — Talhão 03</h3><div class="grid3"><div><b>Área saudável</b><p>83,4%</p></div><div><b>Estresse hídrico</b><p>12%</p></div><div><b>Possível praga</b><p>4,6%</p></div></div><div class="alert" style="margin-top:15px">💡 <div><strong>Recomendação simulada</strong><span class="mini">Priorizar inspeção em campo na região nordeste do talhão e verificar disponibilidade hídrica.</span></div></div>';toast('IA simulada: análise concluída')}
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js').catch(()=>{}));
+}
+</script>
+</body>
+</html>
